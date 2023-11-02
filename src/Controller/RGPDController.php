@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RGPDController extends AbstractController
 {
-    #[Route('/r/g/p/d', name: 'app_r_g_p_d')]
+    #[Route('/rgpd', name: 'app_rgpd')]
     public function index(): Response
     {
         return $this->render('rgpd/index.html.twig', [

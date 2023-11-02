@@ -6,4 +6,13 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.sass';
+
+//import jquery
+//const $ = require('jquery');
+
+//bootstrap
+require('bootstrap');
+
+//import js file
+import "./showAndHiddePassword.js";

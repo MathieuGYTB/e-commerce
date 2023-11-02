@@ -20,15 +20,19 @@
     <h1 class="h3 mb-3 font-weight-normal">Connectez vous svp!</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label id="passwordLabel" for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
+    <div class="password-icon">
+        <span class="material-symbols-outlined eye-off">visibility_off</span>
+        <span class="material-symbols-outlined eye-on">visibility</span>
+    </div>
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
+        value="{{ csrf_token('authenticate') }}"
     >
 
     <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
     </button>
+    <div class="mb-3 text">Vous n'êtes pas enregistré ? <a href="{{ path('app_register')}}">enregistrez-vous en cliquant ici</a></div>
 </form>
 {% endblock %}
