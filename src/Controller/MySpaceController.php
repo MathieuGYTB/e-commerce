@@ -8,11 +8,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MySpaceController extends AbstractController
 {
-    #[Route('/mySpace', name: 'app_my_space')]
+    #[Route('/profile/my-space', name: 'app_my_space')]
     public function index(): Response
     {
+        //get user datas
+        $userName = ucfirst($this->getUser()->getName());
+        $userFirstname = ucfirst($this->getUser()->getFirstname());
+        $userEmail = $this->getUser()->getEmail();
+        $userEmailVerifier = $this->getUser()->isVerified();
         return $this->render('my_space/index.html.twig', [
-            'controller_name' => 'MySpaceController',
+            "name" => $userName,
+            "firstname" => $userFirstname,
+            "email" => $userEmail,
+            "verified" => $userEmailVerifier
         ]);
     }
 }

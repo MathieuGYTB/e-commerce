@@ -2,11 +2,25 @@
 
 {% block title %}changer le mot de passe {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
 {% block body %}
+
     <h1>Changer le mot de passe</h1>
 
     {{ form_start(resetForm) }}
         {{ form_row(resetForm.plainPassword) }}
+        <div class="eye">
+            <span class="material-symbols-outlined eye-off">visibility_off</span>
+            <span class="material-symbols-outlined eye-on">visibility</span>
+            <span class="displayEye">afficher le mot de passe</span>
+            <span class="noDisplay">cacher le mot de passe</span>
+        </div>
+        <br>
         <button class="btn btn-primary">modifier le mot de passe</button>
     {{ form_end(resetForm) }}
+
 {% endblock %}

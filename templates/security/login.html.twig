@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Se connecter !{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
 {% block body %}
-{% for flash_success in app.flashes('success') %}
-        <div class="alert alert-success" role="alert">{{ flash_success }}</div>
-{% endfor %}
-<form method="post">
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    
+    <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -17,22 +22,31 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connectez vous svp!</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label id="passwordLabel" for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    <div class="password-icon">
-        <span class="material-symbols-outlined eye-off">visibility_off</span>
-        <span class="material-symbols-outlined eye-on">visibility</span>
-    </div>
-    <input type="hidden" name="_csrf_token"
+        <h1 class="h3 mb-3 font-weight-normal">Connectez vous svp!</h1>
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        <br>
+        <label class="passwordLabel inputPassword" for="inputPassword">Password
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            <div class="password-icon">
+                <span class="material-symbols-outlined eye-off">visibility_off</span>
+                <span class="material-symbols-outlined eye-on">visibility</span>
+            </div>
+        </label>
+        <br>
+        <br>
+        <input type="hidden" name="_csrf_token"
         value="{{ csrf_token('authenticate') }}"
-    >
+        >
 
-    <button class="btn btn-lg btn-primary" type="submit">
+        <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
-    </button>
-    <div class="mb-3 text">Vous n'êtes pas enregistré ? <a href="{{ path('app_register')}}">enregistrez-vous en cliquant ici</a></div>
-</form>
+        </button>
+        <br>
+        <br>
+        <div class="mb-3 text">Vous avez oublié votre mot de passe ? <a href="{{ path('app_forgot_password_request')}}">Cliquez ici</a></div>
+        <br>
+        <div class="mb-3 text">Vous n'êtes pas enregistré ? <a href="{{ path('app_register')}}">enregistrez-vous en cliquant ici</a></div>
+    </form>
+
 {% endblock %}

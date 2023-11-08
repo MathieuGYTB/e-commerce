@@ -2,24 +2,37 @@
 
 {% block title %}S'enregistrer{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
 
     <h1>S'enregistrer</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.name)}}
+        {{ form_row(registrationForm.firstname)}}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'mot de passe'
         }) }}
+        <div class="eye">
+                <span class="material-symbols-outlined eye-off">visibility_off</span>
+                <span class="material-symbols-outlined eye-on">visibility</span>
+                <span class="displayEye">Afficher le mot de passe</span>
+                <span class="noDisplay">Cacher le mot de passe</span>
+        </div>
+        <br>
         {{ form_row(registrationForm.agreeTerms, {
-            label: "Conditions d'utilisation"
+            label: "Accepter les conditions d'utilisations de vos données personnelles"
         }) }} <a href="{{ path('app_rgpd')}}">Règlementation Générale de la Protection des Données</a>
         <br>
-        <button type="submit" class="btn">S'enregistrer</button>
+        <br>
+        <button type="submit" class="btn btn-primary">S'enregistrer</button>
     {{ form_end(registrationForm) }}
+
 {% endblock %}

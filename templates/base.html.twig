@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -12,6 +14,49 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <!--Navbar-->
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{ path('app_home')}}">Accueil</a>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_buy')}}">Achetez la {{ description }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="CGV" class="nav-link" href="{{ path('app_cgv')}}">Conditions générales de vente</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="RGPD" class="nav-link" aria-current="page" href="{{ path('app_rgpd')}}">Réglementation concernant les données personnelles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="licence" class="nav-link" aria-current="page" href="{{ path('app_licence')}}">licence</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="contact" class="nav-link" aria-current="page" href="{{ path('app_contact')}}">Contact</a>
+                            </li> 
+                            <li class="nav-item">
+                                <a id="connecter" class="nav-link" aria-current="page" href="{{ path('app_register')}}">s'enregistrer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="login" class="nav-link" aria-current="page" href="{{ path('app_login')}}">se connecter/se déconnecter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="user" class="nav-link" aria-current="page" href="{{ path('app_my_space')}}">mon espace</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {% block img %}
+            {% endblock %}
+        </header>
+        <main>
         {% block body %}{% endblock %}
+        </main>
     </body>
 </html>

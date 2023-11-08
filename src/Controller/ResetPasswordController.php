@@ -22,7 +22,7 @@ use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 #[Route('/reset-password')]
 class ResetPasswordController extends AbstractController
-{
+{   
     use ResetPasswordControllerTrait;
 
     public function __construct(
@@ -86,7 +86,7 @@ class ResetPasswordController extends AbstractController
 
         $token = $this->getTokenFromSession();
         if (null === $token) {
-            throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
+            throw $this->createNotFoundException("Pas de jeton de modification de mot de passe trouvé dans l'url ou dans la session.");
         }
 
         try {
@@ -155,11 +155,12 @@ class ResetPasswordController extends AbstractController
 
             return $this->redirectToRoute('app_check_email');
         }
-
+        $adminEmail = $_ENV["ADMIN_EMAIL"];
+        $adminCompany = $_ENV["ADMIN_COMPANY"];
         $email = (new TemplatedEmail())
-            ->from(new Address('mat.68@orange.fr', 'MG Production'))
+            ->from(new Address($adminEmail, $adminCompany))
             ->to($user->getEmail())
-            ->subject('Your password reset request')
+            ->subject('Votre demande de changement de mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,

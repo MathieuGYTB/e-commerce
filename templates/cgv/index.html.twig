@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CGVController!{% endblock %}
+{% block title %}CGV{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/mat68/OneDrive/Bureau/e-commerce/e-commerce/src/Controller/CGVController.php'|file_link(0) }}">src/Controller/CGVController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/mat68/OneDrive/Bureau/e-commerce/e-commerce/templates/cgv/index.html.twig'|file_link(0) }}">templates/cgv/index.html.twig</a></code></li>
-    </ul>
-</div>
+<h1>Conditions générales de vente</h1>
+      <br/>
+      <ol>
+        <li>Licence GNU <a aria-current="page" href="{{ path('app_licence')}}">Licence</a></li>
+        <li>Le prix unitaire de la {{ description }} est de {{ price }} {{ currency }}.</li>
+        <li>Le paiement sera efféctué à {{ name }} dont voici les coordonées : Nom de la micro-entreprise : {{ company }}, numéro de siret : {{ siret }}, code APE : {{ ape }}, adresse : {{ address }}, adresse e-mail : {{ email }}, numéro de téléphone : {{ telephone }}</li>
+        <li>Mode de paiement : le paiement s'effectura par carte bancaire uniquement.</li>
+        <li>La {{ description }} étant un dossier numérique et étant téléchargeable immédiatement après le paiement, vous devez renoncer à votre délai de rétractation de 14 jours et ne pouvez pas demander un remboursement.</li>
+        <li>Une fois le paiement effectué et valide, vous recevrez un e-mail contenant la facture et vous pourrez télécharger la {{ description }}.</li>
+        <li>La TVA est {{ tva }}.</li>
+        <li>{{ name }} est le responsable  du site web et {{ host}} en est l'hébergeur.</li>
+      </ol>
 {% endblock %}

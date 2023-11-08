@@ -3,6 +3,7 @@
 {% block title %}changer le mot de passe{% endblock %}
 
 {% block body %}
+
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
@@ -18,4 +19,5 @@
 
         <button class="btn btn-primary">Envoyer l'email de changement de mot de passe</button>
     {{ form_end(requestForm) }}
+
 {% endblock %}

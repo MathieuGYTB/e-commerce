@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BuyController extends AbstractController
 {
-    #[Route('/buy', name: 'app_buy')]
+    #[Route('/profile/buy', name: 'app_buy')]
     public function index(): Response
     {
         return $this->render('buy/index.html.twig', [

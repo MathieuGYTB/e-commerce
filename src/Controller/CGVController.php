@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CGVController extends AbstractController
 {
-    #[Route('/c/g/v', name: 'app_c_g_v')]
+    #[Route('/cgv', name: 'app_cgv')]
     public function index(): Response
     {
         return $this->render('cgv/index.html.twig', [

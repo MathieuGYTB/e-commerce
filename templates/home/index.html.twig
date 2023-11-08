@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
+{% block title %}Home{% endblock %}
+{% block img %}<img id="header-image" src="{{asset('images/businessman.jpg')}}" alt="image affaire"/>{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/mat68/OneDrive/Bureau/e-commerce/e-commerce/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/mat68/OneDrive/Bureau/e-commerce/e-commerce/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% for message in app.flashes('cancel') %}
+  <div class="alert alert-success">
+    {{ message }}
+  </div>
+{% endfor %}
+  <h1>Bonjour !</h1>
+  <br/>
+  <p>Vous recherchez un télétravail ? 
+    Vous désirez être indépendant et travailler de où vous voulez et quand vous voulez ?
+    Alors vous êtes au bon endroit. {{ company }} a l'immense plaisir de vous présenter la {{ description }} 
+    qui vous permettra de devenir développeur web et mobile. 
+    La seule chose dont vous aurez besoin est d'un ordinateur et d'une connection à internet. 
+  </p>
+  <br/>
+  <div class="text-center">
+    <a class="btn btn-success" href="{{ path('app_buy')}}" role="button">Achetez la {{ description }} maintenant</a>
+  </div>
+  
+  <br/>
+  <h2>En quoi consiste le métier de développeur ?</h2>
+  <br/>
+  <p>Cela consiste à créer des sites web et des applications mobile pour vous même ou pour des clients. 
+  Pour cela, le développeur doit maitriser les différents langages de code ainsi que les différents outils informatiques nécessaires à la réalisation d'un site web.
+  Le développeur doit aussi connaitre la réglementation concernant les données personnelles des utilisateurs ainsi que les lois concernant la réalisation de site web. 
+  </p>
+  <br/>
+  <div class="text-center">
+    <a class="btn btn-success" href="{{ path('app_buy')}}" role="button">Achetez la {{ description }} maintenant</a>
+  </div>
 {% endblock %}
