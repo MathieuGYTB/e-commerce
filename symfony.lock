@@ -95,15 +95,6 @@
             "./src/Kernel.php"
         ]
     },
-    "symfony/mailchimp-mailer": {
-        "version": "6.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "4.4",
-            "ref": "1be490e068472fc87e226cf54bc95fb6f2e49117"
-        }
-    },
     "symfony/mailer": {
         "version": "6.3",
         "recipe": {
@@ -200,15 +191,6 @@
         "files": [
             "./config/packages/security.yaml"
         ]
-    },
-    "symfony/sendinblue-mailer": {
-        "version": "6.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "5.2",
-            "ref": "ae1cf494ce06b9a4578a8445c610402a1676ee8d"
-        }
     },
     "symfony/translation": {
         "version": "6.3",
@@ -318,5 +300,17 @@
     },
     "twig/extra-bundle": {
         "version": "v3.7.1"
+    },
+    "vich/uploader-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.13",
+            "ref": "1b3064c2f6b255c2bc2f56461aaeb76b11e07e36"
+        },
+        "files": [
+            "./config/packages/vich_uploader.yaml"
+        ]
     }
 }

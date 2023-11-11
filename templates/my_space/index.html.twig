@@ -25,12 +25,15 @@
     <p>{{ email }}</p>
     <br>
     <br>
-    {% if is_granted('ROLE_CUSTOMER') %}
-        <h2>Votre {{ description }}</h2>
-        <br/>
+    {% if is_granted('ROLE_CUSTOMER') or is_granted('ROLE_ADMIN') %}
+        <h2>Votre formation</h2>
+        <br>
+        <br>
         <div class="text-center">
-            <a class="btn btn-success" href="{{asset('formationdev.zip')}}" download="formation.zip">Télécharger la {{ description }}</a>
+            <a class="btn btn-success" href="{{asset('formationdev.zip')}}" download="formation.zip">Télécharger la formation</a>
         </div>
     {% endif %}
-
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_product_index')}}">gérer les produits</a>
+    {% endif %}
 {% endblock %}

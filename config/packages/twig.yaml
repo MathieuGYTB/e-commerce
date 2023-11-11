@@ -2,7 +2,6 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
     globals: 
-        description: 'formation'
         name: 'Guyot Mathieu'
         address: '1 avenue de Fribourg 68000 Colmar'
         email: '%env(ADMIN_EMAIL)%'
@@ -10,8 +9,6 @@ twig:
         telephone: '06.63.02.79.29'
         siret: '83218902100021'
         ape: '6201Z'
-        price: '500'
-        currency: 'euros'
         tva: 'non applicable ART.293B du CGI'
         quantity: '1'
         host: 'ionos'

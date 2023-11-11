@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+/formationdev.zip
 /.env
 /.env.local
 /.env.local.php

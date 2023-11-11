@@ -12,13 +12,13 @@
   <br/>
   <p>Vous recherchez un télétravail ? 
     Vous désirez être indépendant et travailler de où vous voulez et quand vous voulez ?
-    Alors vous êtes au bon endroit. {{ company }} a l'immense plaisir de vous présenter la {{ description }} 
+    Alors vous êtes au bon endroit. {{ company }} a l'immense plaisir de vous présenter la {{ formation.name }} 
     qui vous permettra de devenir développeur web et mobile. 
     La seule chose dont vous aurez besoin est d'un ordinateur et d'une connection à internet. 
   </p>
   <br/>
   <div class="text-center">
-    <a class="btn btn-success" href="{{ path('app_buy')}}" role="button">Achetez la {{ description }} maintenant</a>
+    <a class="btn btn-success" href="{{ path('app_shop')}}" role="button">Achetez la {{ formation.name }} maintenant</a>
   </div>
   
   <br/>
@@ -30,6 +30,6 @@
   </p>
   <br/>
   <div class="text-center">
-    <a class="btn btn-success" href="{{ path('app_buy')}}" role="button">Achetez la {{ description }} maintenant</a>
+    <a class="btn btn-success" href="{{ path('app_shop')}}" role="button">Achetez la {{ formation.name }} maintenant</a>
   </div>
 {% endblock %}
