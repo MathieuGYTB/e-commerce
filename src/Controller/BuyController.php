@@ -5,23 +5,23 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\CartService;
 
 class BuyController extends AbstractController
 {
     #[Route('/profile/buy', name: 'app_buy')]
-    public function index(): Response
+    public function index(CartService $cartService): Response
     {   
 
         $userEmail = $this->getUser()->getEmail();
-
+        $cart = $cartService->getFullCart();
+        
         if ($_ENV['APP_ENV'] === 'dev') {
             $stripeSecretKey = $_ENV["STRIPE_SECRET_KEY_DEV"];
-            $YOUR_DOMAIN = 'http://localhost:4242';
-            $price = 'price_1OAUYUKgHxrl7uH3UAIoogET';
+            $YOUR_DOMAIN = 'http://127.0.0.1:8000';
         } else if ($_ENV['APP_ENV'] === 'prod') {
             $stripeSecretKey = $_ENV['STRIPE_SECRET_KEY_PROD'];
             $YOUR_DOMAIN = 'https://easywebjob.fr';
-            $price = 'price_1OAU3RKgHxrl7uH3XZW1s4tv';
         };
         
         \Stripe\Stripe::setApiKey($stripeSecretKey);
@@ -38,11 +38,19 @@ class BuyController extends AbstractController
                 'terms_of_service' => 'required',
             ],
             'customer_email' => $userEmail,
-            'line_items' => [[
-            # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-                'price' => $price,
-                'quantity' => 1,
-            ]],
+            'line_items' => [
+                array_map(fn (array $item) => [
+                    "quantity" => $item["quantity"],
+                    "price_data" => [
+                        "currency" => "EUR",
+                        "unit_amount" => $item["product"]->getPrice() * 100,
+                        "product_data" => [
+                            "name" => $item["product"]->getName(),
+                            "description" => $item["product"]->getDescription()
+                        ]
+                    ],
+                ], $cart)
+            ],
             'mode' => 'payment',
             'allow_promotion_codes' => true,
             'invoice_creation' => [
@@ -64,11 +72,11 @@ class BuyController extends AbstractController
                     ],
                 ],
             ],
-            'success_url' => $YOUR_DOMAIN . '/success',
-            'cancel_url' => $YOUR_DOMAIN . '/cancel',
-            'automatic_tax' => [
+            'success_url' => $YOUR_DOMAIN . '/profile/success',
+            'cancel_url' => $YOUR_DOMAIN . '/profile/cancel',
+            /*'automatic_tax' => [
                 'enabled' => true,
-            ],
+            ],*/
         ]);
 
         header("HTTP/1.1 303 See Other");
@@ -77,7 +85,7 @@ class BuyController extends AbstractController
         return $this->redirect($checkout_session->url, 303);
     }
 
-    #[Route(path:'/success', name:'app_success')]
+    #[Route(path:'/profile/success', name:'app_success')]
 
     public function success(): Response
     {
@@ -85,7 +93,7 @@ class BuyController extends AbstractController
         return $this->render('buy/success.html.twig');
     }
 
-    #[Route(path:'/cancel', name:'app_cancel')]
+    #[Route(path:'/profile/cancel', name:'app_cancel')]
     public function cancel(): Response
     {
         $this->addFlash('cancel', 'Votre achat a été annulé');

@@ -6,12 +6,12 @@
 <h1>Réglement général sur la protection des données</h1>
       <br/>
       <ol>
-        <li>Voici la liste des données personnelles qui vous sont demandées : Nom, Prénom, adresse postale, adresse e-mail, données de carte bancaire.</li>
-        <li>{{ company }} vous demande et conserve votre adresse e-mail, nom et prénom, adresse postale et votre facture. La passerelle de paiement Stripe vous demande et conserve votre nom, prénom, e-mail, adresse postale, coordonnées de carte bancaire.</li>
-        <li>Les données qui vous sont demandées servent au paiement des produits et à la réalisation et l'envoie de la facture par e-mail. 
+        <li class="text">Voici la liste des données personnelles qui vous sont demandées : Nom, Prénom, adresse postale, adresse e-mail, données de carte bancaire.</li>
+        <li class="text">{{ company }} vous demande et conserve votre adresse e-mail, nom et prénom, adresse postale et votre facture. La passerelle de paiement Stripe vous demande et conserve votre nom, prénom, e-mail, adresse postale, coordonnées de carte bancaire.</li>
+        <li class="text">Les données qui vous sont demandées servent au paiement des produits et à la réalisation et l'envoie de la facture par e-mail. 
         Cette dernière doit comporter un numéro de facture, votre nom, prénom, adresse, un moyen  de vous contacter (votre adresse e-mail), la date d'achat, la designation du produit, la quantité, le prix, la monnaie, 
         les références de l'entreprise qui vous émet la facture (Nom, adresse, téléphone, e-mail, N° siret, code APE, la mention : la TVA est {{ tva }}). </li>
-        <li>Les données sont conservées 10 ans en archivage intermediaire en application du Code de commerce et sont ensuite supprimées.</li>
-        <li>Pour toutes questions relatives à vos données personnelles, contactez {{ name }} en allant dans la rubrique <a href="{{ path('app_contact')}}">contact</a>. Vous obtiendrez une réponse dans un délai maximum d'un mois.</li>
+        <li class="text">Les données sont conservées 10 ans en archivage intermediaire en application du Code de commerce et sont ensuite supprimées.</li>
+        <li class="text">Pour toutes questions relatives à vos données personnelles, contactez {{ name }} en allant dans la rubrique <a href="{{ path('app_contact')}}">contact</a>. Vous obtiendrez une réponse dans un délai maximum d'un mois.</li>
       </ol>
 {% endblock %}

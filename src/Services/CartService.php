@@ -18,7 +18,7 @@ class CartService {
   {
   
     $cart = $this->requestStack->getSession()->get("cart", []);
-
+  
     if(!empty($cart[$id])) 
     {
       $cart[$id]++;
@@ -29,13 +29,27 @@ class CartService {
     $this->requestStack->getSession()->set("cart", $cart);
   }
 
+  public function addFormation(int $id)
+  {
+    
+    $cart = $this->requestStack->getSession()->get("cart", []);
+
+    if(empty($cart[$id])) {
+      $cart[$id] = 1;
+    } 
+
+    $this->requestStack->getSession()->set("cart", $cart);
+  }
   public function less(int $id)
   {
     $cart = $this->requestStack->getSession()->get("cart", []);
 
     if(!empty($cart[$id])) 
     {
-      $cart[$id]--;
+      if($cart[$id] > 1) {
+        $cart[$id]--;
+      } else if ($cart[$id] <= 1)
+        unset( $cart[$id]);
     }
 
     $this->requestStack->getSession()->set("cart", $cart);

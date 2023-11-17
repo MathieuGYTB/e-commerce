@@ -6,15 +6,16 @@
 <h1>Conditions générales de vente</h1>
       <br/>
       <ol>
-        <li>Licence GNU <a aria-current="page" href="{{ path('app_licence')}}">Licence</a></li>
-        <li>Le prix unitaire de la {{ formation.name }} est de {{ formation.price }} {{ formation.currency }}.</li>
-        <li>Le prix d'un {{ soutient.name }} est de {{ soutient.price}} {{ soutient.currency }} pour 1H00.</li>
-        <li>Le paiement sera efféctué à {{ name }} dont voici les coordonées : Nom de la micro-entreprise : {{ company }}, numéro de siret : {{ siret }}, code APE : {{ ape }}, adresse : {{ address }}, adresse e-mail : {{ email }}, numéro de téléphone : {{ telephone }}</li>
-        <li>Mode de paiement : le paiement s'effectura par carte bancaire uniquement.</li>
-        <li>La {{ formation.name }} étant un dossier numérique et étant téléchargeable immédiatement après le paiement, vous devez renoncer à votre délai de rétractation de 14 jours et ne pouvez pas demander un remboursement.</li>
-        <li>Les {{ soutient.name }} sont un service en ligne en live. Vous pouvez vous rétracter et demander un remboursement en cas d'annulation du service.
-        <li>Une fois le paiement effectué et valide, vous recevrez un e-mail contenant la facture et vous pourrez télécharger la {{ formation.name }}.</li>
-        <li>La TVA est {{ tva }}.</li>
-        <li>{{ name }} est le responsable  du site web et {{ host}} en est l'hébergeur.</li>
+        <li class="text">Licence GNU <a aria-current="page" href="{{ path('app_licence')}}">Licence</a></li>
+        <li class="text">Le prix unitaire de la {{ formation.name }} est de {{ formation.price }} {{ formation.currency }}.</li>
+        <li class="text">Le prix d'un {{ soutient.name }} est de {{ soutient.price}} {{ soutient.currency }}.</li>
+        <li class="text">Le paiement sera efféctué à {{ name }} dont voici les coordonées : Nom de la micro-entreprise : {{ company }}, numéro de siret : {{ siret }}, code APE : {{ ape }}, adresse : {{ address }}, adresse e-mail : {{ email }}, numéro de téléphone : {{ telephone }}</li>
+        <li class="text">Mode de paiement : le paiement s'effectura par carte bancaire uniquement.</li>
+        <li class="text">La {{ formation.name }} étant un dossier numérique et étant téléchargeable immédiatement après le paiement, vous devez renoncer à votre délai de rétractation de 14 jours et ne pouvez pas demander un remboursement.</li>
+        <li class="text">Les {{ soutient.name }} sont un service en ligne en live. Vous pouvez vous rétracter et demander un remboursement en cas d'annulation du service.
+        <li class="text">Si vous avez acheté la {{ formation.name }} : une fois le paiement effectué et valide, vous recevrez un e-mail contenant la facture et vous pourrez télécharger la {{ formation.name }}.</li>
+        <li>Si vous avez acheté un ou des {{ soutient.name }} : une fois le paiement effectué et valide, vous recevrez un email dans les 72h par Mathieu Guyot de MG Production pour fixer la date et l'heure du cours qui se détoulera en live et en ligne via le logiciel Zoom.</li>
+        <li class="text">La TVA est {{ tva }}.</li>
+        <li class="text">{{ name }} est le responsable  du site web et {{ host}} en est l'hébergeur.</li>
       </ol>
 {% endblock %}

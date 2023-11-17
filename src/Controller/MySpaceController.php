@@ -16,11 +16,14 @@ class MySpaceController extends AbstractController
         $userFirstname = ucfirst($this->getUser()->getFirstname());
         $userEmail = $this->getUser()->getEmail();
         $userEmailVerifier = $this->getUser()->isVerified();
+        $userInvoice = $this->getUser()->getBill();
+
         return $this->render('my_space/index.html.twig', [
             "name" => $userName,
             "firstname" => $userFirstname,
             "email" => $userEmail,
-            "verified" => $userEmailVerifier
+            "verified" => $userEmailVerifier,
+            "invoices" => $userInvoice
         ]);
     }
 }

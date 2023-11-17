@@ -39,6 +39,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/customer, roles: ROLE_CUSTOMER }
+        - { path: ^/customer_formation, roles: ROLE_CUSTOMER_FORMATION }
         - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
