@@ -87,20 +87,12 @@ class Product
         return $this;
     }
 
-    /**
-     * Get the value of imageFile
-     */ 
     public function getImageFile()
     {
         return $this->imageFile;
     }
 
-    /**
-     * Set the value of imageFile
-     *
-     * @return  self
-     */ 
-    public function setImageFile($imageFile)
+    public function setImageFile(File $imageFile)
     {
         $this->imageFile = $imageFile;
 
@@ -118,4 +110,5 @@ class Product
 
         return $this;
     }
+
 }

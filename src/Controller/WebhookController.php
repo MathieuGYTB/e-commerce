@@ -22,7 +22,7 @@ class WebhookController extends AbstractController {
       $endpoint_secret = $_ENV['STRIPE_SECRET_WHSEC_PROD'];
     }
 
-    $stripe = new \Stripe\StripeClient($stripeSecretKey);
+    new \Stripe\StripeClient($stripeSecretKey);
     \Stripe\Stripe::setApiKey($stripeSecretKey);
     
     $payload = @file_get_contents('php://input');
@@ -48,7 +48,8 @@ class WebhookController extends AbstractController {
     switch ($event->type) {
       case 'invoice.payment_succeeded':
         $invoice = $event->data->object;
-        $user->setBill([$invoice->invoice_pdf]);
+        $pdf = $invoice->invoice_pdf;
+        $user->setBill([$pdf]);
         $data = $invoice->lines->data;
         foreach ($data as $line) {
           $products[] = $line->description;
@@ -60,7 +61,9 @@ class WebhookController extends AbstractController {
         }
         $em->persist($user);
         $em->flush();
-        $requestStack->getSession()->set('cart', []);
+        $cart = $requestStack->getSession()->get('cart');
+        unset($cart);
+        break;
       default:
         echo 'Received unknown event type ' . $event->type;
     }

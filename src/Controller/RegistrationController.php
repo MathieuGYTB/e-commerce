@@ -47,6 +47,7 @@ class RegistrationController extends AbstractController
             $user->setEmail($form->get('email')->getData());
             $user->setRoles(["ROLE_USER"]);
             $user->setAgreeTerms($form->get("agreeTerms")->getData());
+            $user->setBill([]);
             $entityManager->persist($user);
             $entityManager->flush();
 

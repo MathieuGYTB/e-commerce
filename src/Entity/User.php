@@ -45,8 +45,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $agreeTerms = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $bill = null;
+    #[ORM\Column(nullable: true)]
+    private ?array $bill = [];
 
 
     public function getId(): ?int

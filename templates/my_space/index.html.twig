@@ -25,13 +25,20 @@
     <p>{{ email }}</p>
     <br>
     <br>
-    {% if is_granted('ROLE_CUSTOMER') or is_granted('ROLE_CUSTOMER_FORMATION')  %}
+    {% if is_granted('ROLE_CUSTOMER') or is_granted('ROLE_CUSTOMER_FORMATION') or is_granted('ROLE_ADMIN') %}
         <h2>Votre facture</h2>
-        <ol>
-            {% for invoice in invoices %}
-                <li class="text">{{ invoice }}</li>
-            {% endfor %}
-        </ol>
+        <br>
+        {% if invoices is empty %}
+            <p>Vous n'avez pas encore de facture</p>
+            <br>
+        {% else %}
+            <ol>
+                {% for invoice in invoices %}
+                    <li class="text">{{ invoice }}</li>
+                {% endfor %}
+            </ol>
+            <br>
+        {% endif %}
     {% endif %}
     {% if is_granted('ROLE_CUSTOMER_FORMATION') or is_granted('ROLE_ADMIN') %}
         <h2>Votre formation</h2>
